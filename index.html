@@ -292,6 +292,15 @@
       margin: 0.5rem 0;
     }
     
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
     .update-log {
       margin-top: 1.5rem;
     }
@@ -347,7 +356,7 @@
     </div>
     
     <div class="update-banner">
-      <strong>Last updated:</strong> April 21, 2026 · Added TUDCA research findings · Next update scheduled for October 2026 pipeline review
+      <strong>Last updated:</strong> April 21, 2026 · MGH Wearables Study enrollment confirmed (starts May 4) · CRC-SCA links added
     </div>
     
     <div class="nav-tabs">
@@ -398,7 +407,7 @@
       <div class="card">
         <h3>Current care team</h3>
         <p><strong>Dr. Isabel Alfradique-Dunham</strong><br/>Movement Disorders, WashU Medicine<br/>Primary neurologist · Next visit: May 26, 2026</p>
-        <p style="margin-top: 1rem;"><strong>Northwestern CRC-SCA</strong><br/>Natural history study coordination<br/>Enrollment visit: June 4, 2026<a href="https://www.ataxia.org/crc-sca/" target="_blank" style="color: #185FA5; text-decoration: none;" >Learn more about CRC-SCA</a></p>
+        <p style="margin-top: 1rem;"><strong><a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></strong><br/>Northwestern coordination<br/>Enrollment visit: June 4, 2026</p>
         <p style="margin-top: 1rem;"><strong>Jennifer Millar, PT</strong><br/>Ataxia balance/gait researcher, Johns Hopkins<br/>Recently completed baseline assessments</p>
       </div>
     </div>
@@ -409,18 +418,27 @@
         <h3>Upcoming appointments</h3>
         <div class="timeline">
           <div class="timeline-item">
+            <div class="timeline-date">May 4, 2026</div>
+            <div class="timeline-label">MGH Wearables Study — First session</div>
+            <div class="timeline-desc">Remote session via Nathan Zhang</div>
+            <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
+              <strong>Activities:</strong> Wrist and ankle sensor wear, neurological testing, questionnaires
+            </div>
+          </div>
+
+          <div class="timeline-item">
             <div class="timeline-date">May 26, 2026</div>
             <div class="timeline-label">WashU Neurology follow-up</div>
             <div class="timeline-desc">Dr. Isabel Alfradique-Dunham · Movement Disorders</div>
             <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
-              <strong>Topics:</strong> WashU coordination with CRC-SCA, record sharing, VO-659 trial status, medication use in early SCA3, CCAS screening
+              <strong>Topics:</strong> WashU coordination with CRC-SCA, record sharing, VO-659 trial status, stimulant use in early SCA3, CCAS screening
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-date">June 4, 2026, 10 AM</div>
             <div class="timeline-label">Northwestern new patient visit</div>
-            <div class="timeline-desc">Dr. Akhtar · CRC-SCA Natural History Study enrollment</div>
+            <div class="timeline-desc">Dr. Akhtar · <a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a> enrollment</div>
             <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
               <strong>Goal:</strong> Baseline assessment and enrollment in natural history registry. Prerequisite for future treatment trials.
             </div>
@@ -430,11 +448,17 @@
       
       <div class="card">
         <h3>Preparation notes</h3>
-        <p><strong>For May 26 WashU visit:</strong></p>
+        <p><strong>For May 4 MGH Wearables first session:</strong></p>
+        <ul>
+          <li>Confirm remote session details with Nathan Zhang</li>
+          <li>Have clear space for sensor wear and testing</li>
+          <li>Be available for brief check-in call</li>
+        </ul>
+        <p style="margin-top: 1rem;"><strong>For May 26 WashU visit:</strong></p>
         <ul>
           <li>Bring appointment prep document with medical summary</li>
-          <li>List current medications</li>
-          <li>Ask about MoCA baseline and neurology co-management of medications</li>
+          <li>List current medications (mirtazapine, lisdexamfetamine, sumatriptan)</li>
+          <li>Ask about MoCA baseline and neurology co-management of stimulants</li>
           <li>Discuss CCAS (cerebellar cognitive affective syndrome) screening</li>
         </ul>
         <p style="margin-top: 1rem;"><strong>For June 4 Northwestern visit:</strong></p>
@@ -449,28 +473,28 @@
     <!-- STUDIES TAB -->
     <div id="studies" class="section">
       <div class="study-card">
-  <div class="study-status enrolled">Enrollment scheduled</div>
-  <div class="study-title">CRC-SCA Natural History Study</div>
-  <div class="study-details">
-    <p><strong>Status:</strong> Scheduled for June 4, 2026 at Northwestern</p>
-    <p><strong>What it is:</strong> Multi-site longitudinal registry tracking SCA patients over time. Collects baseline cognitive, motor, and genetic data. <a href="https://www.ataxia.org/crc-sca/" target="_blank" style="color: #185FA5; text-decoration: none;">Learn more about CRC-SCA</a></p>
-    <p><strong>Why it matters:</strong> Independent scientific value + prerequisite for many clinical trials, including future Northwestern treatment trials</p>
-    <p><strong>Contact:</strong> Sonia Lopez (sonia.lopez@northwestern.edu)</p>
-  </div>
-</div>
+        <div class="study-status enrolled">Enrollment scheduled</div>
+        <div class="study-title"><a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></div>
+        <div class="study-details">
+          <p><strong>Status:</strong> Scheduled for June 4, 2026 at Northwestern</p>
+          <p><strong>What it is:</strong> Multi-site longitudinal registry tracking SCA patients over time. Collects baseline cognitive, motor, and genetic data.</p>
+          <p><strong>Why it matters:</strong> Independent scientific value + prerequisite for many clinical trials, including future Northwestern treatment trials</p>
+          <p><strong>Contact:</strong> Sonia Lopez (sonia.lopez@northwestern.edu)</p>
+        </div>
+      </div>
       
       <div class="study-card">
-  <div class="study-status enrolled">Enrolled - starts May 4</div>
-  <div class="study-title">MGH Wearables Study</div>
-  <div class="study-details">
-    <p><strong>Status:</strong> Enrolled. First session May 4, 2026</p>
-    <p><strong>What it is:</strong> Remote longitudinal study tracking movement and balance progression every 6 months using wrist/ankle sensors</p>
-    <p><strong>Your participation:</strong> Wear sensors (wrist + ankle) for one week approximately every 6 months, complete neurological tests and brief questionnaires during sensor weeks</p>
-    <p><strong>Duration:</strong> 18 months with checkpoints every 6 months</p>
-    <p><strong>Why it matters:</strong> Develops better measurement tools for clinical trials; creates objective tracking of symptom progression</p>
-    <p><strong>Contact:</strong> Nathan Zhang · mghremotescastudy@mgb.org · 617-726-7909</p>
-  </div>
-</div>
+        <div class="study-status enrolled">Enrolled - starts May 4</div>
+        <div class="study-title">MGH Wearables Study</div>
+        <div class="study-details">
+          <p><strong>Status:</strong> Enrolled. First session May 4, 2026</p>
+          <p><strong>What it is:</strong> Remote longitudinal study tracking movement and balance progression every 6 months using wrist/ankle sensors</p>
+          <p><strong>Your participation:</strong> Wear sensors (wrist + ankle) for one week approximately every 6 months, complete neurological tests and brief questionnaires during sensor weeks</p>
+          <p><strong>Duration:</strong> 18 months with checkpoints every 6 months</p>
+          <p><strong>Why it matters:</strong> Develops better measurement tools for clinical trials; creates objective tracking of symptom progression</p>
+          <p><strong>Contact:</strong> Nathan Zhang · mghremotescastudy@mgb.org · 617-726-7909</p>
+        </div>
+      </div>
       
       <div class="study-card">
         <div class="study-status enrolled">Recently completed</div>
@@ -539,6 +563,16 @@
         
         <div class="log-entry">
           <div class="log-date">April 21, 2026</div>
+          <p><strong>MGH Wearables Study enrollment confirmed.</strong> Nathan Zhang confirmed enrollment; first session May 4, 2026. Study will track progression every 6 months with sensor wear, neurological testing, and questionnaires.</p>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">April 21, 2026</div>
+          <p><strong>CRC-SCA links added throughout hub.</strong> Added direct links to <a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a> on Overview tab, Appointments tab, and Studies tab for easy access to official program information.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">April 21, 2026</div>
           <p><strong>TUDCA research findings added to Research tab.</strong> Portuguese study shows promise in animal models; no human trials yet. GR biomarker identified. Scheduled watch-list item for 2027+.</p>
         </div>
         
@@ -595,27 +629,5 @@
       event.target.classList.add('active');
     }
   </script>
-  
-  <!-- 
-    TO HOST ON GITHUB PAGES (free, live, always updated):
-    
-    1. Create a free account at github.com (5 minutes)
-    2. Click "+ New repository" and name it "jeff-sca3-hub"
-    3. Click "Add a README" and create the repo
-    4. Inside the repo, click "Add file" > "Create new file"
-    5. Name the file "index.html" and paste this entire file into it
-    6. Click "Commit new file"
-    7. Go to Settings > Pages > Select "main" branch > Save
-    8. GitHub will give you a live URL (like github.com/yourname/jeff-sca3-hub)
-    9. Share that link with family—it always shows the latest version
-    10. To update: open the index.html file, click the pencil icon to edit, make changes, commit
-    
-    STANDALONE USE (no GitHub):
-    
-    1. Save this file as "jeff_sca3_family_hub.html"
-    2. Open it in any web browser (File > Open or double-click)
-    3. Email it to family members or save locally
-    4. To update: edit the file yourself or send it to Claude for updates
-  -->
 </body>
 </html>
