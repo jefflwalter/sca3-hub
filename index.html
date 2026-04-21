@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeff's SCA3 Hub</title>
+  <style>
+    :root {
+      --card-bg: #ffffff;
+      --card-border: #d3d1c7;
+      --text-primary: #2c2c2a;
+      --text-secondary: #888780;
+      --accent: #185FA5;
+      --accent-light: #E6F1FB;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --card-bg: #1a1a18;
+        --card-border: #444441;
+        --text-primary: #e8e6dc;
+        --text-secondary: #a8a79f;
+        --accent: #85b7eb;
+        --accent-light: #0c2a40;
+      }
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html, body { margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      color: var(--text-primary);
+      background-color: #fafaf8;
+      line-height: 1.6;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0f0f0d; }
+    }
+    
+    .container { padding: 1.5rem; max-width: 100%; }
+    
+    .header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--card-border);
+    }
+    
+    .header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .header-desc {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .update-banner {
+      background: var(--accent-light);
+      border: 0.5px solid rgba(24, 95, 165, 0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .update-banner strong {
+      color: var(--accent);
+    }
+    
+    .nav-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--card-border);
+      overflow-x: auto;
+    }
+    
+    .nav-tabs button {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    
+    .nav-tabs button:hover {
+      color: var(--text-primary);
+    }
+    
+    .nav-tabs button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    
+    .section { display: none; }
+    .section.active { display: block; }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border: 0.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    
+    .card.status-card {
+      background: var(--accent-light);
+      border-color: rgba(24, 95, 165, 0.2);
+    }
+    
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .card p {
+      margin: 0 0 0.75rem 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .card p:last-child { margin-bottom: 0; }
+    
+    .stat-value {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline {
+      margin-top: 1rem;
+    }
+    
+    .timeline-item {
+      margin-bottom: 1rem;
+      padding-left: 24px;
+      position: relative;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 18px;
+      width: 2px;
+      bottom: -16px;
+      background: var(--card-border);
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    
+    .timeline-date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+    
+    .timeline-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    
+    .research-item {
+      background: var(--card-bg);
+      border: 0.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .research-item h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .research-date {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .research-summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    
+    .research-implications {
+      background: rgba(24, 95, 165, 0.05);
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .implication-title {
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    
+    .study-card {
+      background: var(--card-bg);
+      border: 0.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .study-status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    
+    .study-status.enrolled {
+      background: rgba(99, 153, 34, 0.15);
+      color: #3B6D11;
+    }
+    
+    .study-status.scheduled {
+      background: rgba(255, 193, 7, 0.15);
+      color: #BA7517;
+    }
+    
+    .study-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0.75rem 0;
+    }
+    
+    .study-details {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .study-details p {
+      margin: 0.5rem 0;
+    }
+    
+    .update-log {
+      margin-top: 1.5rem;
+    }
+    
+    .update-log h3 {
+      margin: 0 0 1rem 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .log-entry {
+      background: var(--card-bg);
+      border: 0.5px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .log-date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    
+    .log-entry p {
+      margin: 0.5rem 0 0 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    ul {
+      margin: 0.5rem 0;
+      padding-left: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    ul li {
+      margin: 0.25rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Jeff's SCA3 Hub</h1>
+      <p class="header-desc">
+        A resource for family to understand Jeff's SCA3 diagnosis, current medical care, research participation, and treatment outlook. This page is updated regularly as Jeff's medical team receives new information or new treatments become available. Questions? Reach out to Jeff directly.
+      </p>
+    </div>
+    
+    <div class="update-banner">
+      <strong>Last updated:</strong> April 21, 2026 · Added TUDCA research findings · Next update scheduled for October 2026 pipeline review
+    </div>
+    
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+      <button class="tab-btn" onclick="switchTab('appointments')">Appointments</button>
+      <button class="tab-btn" onclick="switchTab('studies')">Studies</button>
+      <button class="tab-btn" onclick="switchTab('research')">Research</button>
+      <button class="tab-btn" onclick="switchTab('updates')">Updates</button>
+    </div>
+    
+    <!-- OVERVIEW TAB -->
+    <div id="overview" class="section active">
+      <div class="card-grid">
+        <div class="card status-card">
+          <h3>Disease status</h3>
+          <div class="stat-value">SARA 1/40</div>
+          <p>Early-stage with slight symptoms. No assistive devices needed. Functional and independent.</p>
+          <p style="font-size: 12px; margin-top: 0.5rem;">Genetic test: 65 CAG repeats (pathogenic)</p>
+        </div>
+        
+        <div class="card status-card">
+          <h3>Repeat count context</h3>
+          <div class="stat-value">65 repeats</div>
+          <p>Lower than father (72) and brother (70). Favorable but still pathogenic.</p>
+          <p style="font-size: 12px; margin-top: 0.5rem;">Age 51 · Early-stage trajectory</p>
+        </div>
+        
+        <div class="card status-card">
+          <h3>Primary goal</h3>
+          <div class="stat-value">Ahead of curve</div>
+          <p>Proactive enrollment in natural history study, trial access, and research before meaningful progression.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>What is SCA3?</h3>
+        <p>Spinocerebellar ataxia type 3 (also called Machado-Joseph disease) is a progressive neurodegenerative disorder affecting balance, coordination, and movement. It's caused by a genetic mutation (expansion in the ATXN3 gene) that runs in families.</p>
+        <p><strong>Key facts about Jeff's situation:</strong></p>
+        <ul>
+          <li>Early-stage with slight symptoms but very high function (SARA 1/40 is excellent)</li>
+          <li>Family history: father and brother both affected; onset typically age 49–52</li>
+          <li>Jeff's lower repeat count (65 vs. father's 72, brother's 70) may mean slower progression</li>
+          <li>No cure yet, but promising treatments in clinical trials and early-stage pipeline</li>
+          <li>Early enrollment in studies now may help optimize treatments when they arrive</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3>Current care team</h3>
+        <p><strong>Dr. Isabel Alfradique-Dunham</strong><br/>Movement Disorders, WashU Medicine<br/>Primary neurologist · Next visit: May 26, 2026</p>
+        <p style="margin-top: 1rem;"><strong>Northwestern CRC-SCA</strong><br/>Natural history study coordination<br/>Enrollment visit: June 4, 2026</p>
+        <p style="margin-top: 1rem;"><strong>Jennifer Millar, PT</strong><br/>Ataxia balance/gait researcher, Johns Hopkins<br/>Recently completed baseline assessments</p>
+      </div>
+    </div>
+    
+    <!-- APPOINTMENTS TAB -->
+    <div id="appointments" class="section">
+      <div class="card">
+        <h3>Upcoming appointments</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">May 26, 2026</div>
+            <div class="timeline-label">WashU Neurology follow-up</div>
+            <div class="timeline-desc">Dr. Isabel Alfradique-Dunham · Movement Disorders</div>
+            <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
+              <strong>Topics:</strong> WashU coordination with CRC-SCA, record sharing, VO-659 trial status, stimulant use in early SCA3, CCAS screening
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-date">June 4, 2026, 10 AM</div>
+            <div class="timeline-label">Northwestern new patient visit</div>
+            <div class="timeline-desc">Dr. Akhtar · CRC-SCA Natural History Study enrollment</div>
+            <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
+              <strong>Goal:</strong> Baseline assessment and enrollment in natural history registry. Prerequisite for future treatment trials.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Preparation notes</h3>
+        <p><strong>For May 26 WashU visit:</strong></p>
+        <ul>
+          <li>Bring appointment prep document with medical summary</li>
+          <li>List current medications (mirtazapine, lisdexamfetamine, sumatriptan)</li>
+          <li>Ask about MoCA baseline and neurology co-management of stimulants</li>
+          <li>Discuss CCAS (cerebellar cognitive affective syndrome) screening</li>
+        </ul>
+        <p style="margin-top: 1rem;"><strong>For June 4 Northwestern visit:</strong></p>
+        <ul>
+          <li>Confirm enrollment prerequisites and baseline testing schedule</li>
+          <li>Ask about future treatment trial eligibility at Northwestern</li>
+          <li>Clarify what natural history data will be collected</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- STUDIES TAB -->
+    <div id="studies" class="section">
+      <div class="study-card">
+        <div class="study-status enrolled">Enrollment scheduled</div>
+        <div class="study-title">CRC-SCA Natural History Study</div>
+        <div class="study-details">
+          <p><strong>Status:</strong> Scheduled for June 4, 2026 at Northwestern</p>
+          <p><strong>What it is:</strong> Multi-site longitudinal registry tracking SCA patients over time. Collects baseline cognitive, motor, and genetic data.</p>
+          <p><strong>Why it matters:</strong> Independent scientific value + prerequisite for many clinical trials, including future Northwestern treatment trials</p>
+          <p><strong>Contact:</strong> Sonia Lopez (sonia.lopez@northwestern.edu)</p>
+        </div>
+      </div>
+      
+      <div class="study-card">
+        <div class="study-status scheduled">Pending eligibility</div>
+        <div class="study-title">MGH Wearables Study</div>
+        <div class="study-details">
+          <p><strong>Status:</strong> Currently does not qualify (SARA score 1 &lt; threshold 3–15)</p>
+          <p><strong>What it is:</strong> Remote study using wrist/ankle sensors to track movement and balance changes over 18 months</p>
+          <p><strong>Why it matters:</strong> Develops better measurement tools for clinical trials; helps assess symptom progression</p>
+          <p><strong>Next step:</strong> Re-evaluate eligibility if SARA score increases. CRC-SCA enrollment preserves option for future entry.</p>
+          <p><strong>Contact:</strong> Nathan Zhang · mghremotescastudy@mgb.org · 617-726-7909</p>
+        </div>
+      </div>
+      
+      <div class="study-card">
+        <div class="study-status enrolled">Recently completed</div>
+        <div class="study-title">Johns Hopkins IKI Study</div>
+        <div class="study-details">
+          <p><strong>Completed:</strong> April 2026</p>
+          <p><strong>Results:</strong> SARA 1/40, normal vestibular function (vHIT), 25-foot gait test 9.4s (normal)</p>
+          <p><strong>Balance metrics:</strong> Functional Gait Assessment 25/30 (mild fall risk), gait velocity 1.27 m/s</p>
+          <p><strong>Researcher:</strong> Jennifer Millar, PT</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RESEARCH TAB -->
+    <div id="research" class="section">
+      <div class="research-item">
+        <h4>Bile acid treatment prevents SCA3 movement problems in animals</h4>
+        <div class="research-date">April 17, 2026 · National Ataxia Foundation</div>
+        <div class="research-summary">
+          Researchers in Portugal found that TUDCA (tauroursodeoxycholic acid)—a bile acid already approved by the FDA for gastrointestinal disorders—protected balance and coordination in mouse and worm models of SCA3. The drug works by stabilizing a protein called the glucocorticoid receptor (GR), preventing cell death in the brain and spinal cord.
+        </div>
+        <div class="research-implications">
+          <div class="implication-title">What this means for Jeff:</div>
+          <p style="margin: 0;">
+            TUDCA is far earlier-stage than VO-659, but it's encouraging because it's an FDA-approved drug (faster path to trials than new compounds). No human trials yet—more animal safety work needed first. Watch this space in 2027+. GR levels in blood may also become a biomarker for tracking SCA3 progression.
+          </p>
+        </div>
+      </div>
+      
+      <div class="research-item">
+        <h4>VO-659 (Vico Therapeutics)</h4>
+        <div class="research-date">Most advanced SCA3 therapy</div>
+        <div class="research-summary">
+          ASO (antisense oligonucleotide) therapy. Phase 1/2a ongoing. Twice-annual dosing began Feb 2026. FDA IND cleared for US trials. In Huntington's disease cohort, achieved 38% reduction in mutant huntingtin protein in cerebrospinal fluid.
+        </div>
+        <div class="research-implications">
+          <div class="implication-title">What this means for Jeff:</div>
+          <p style="margin: 0;">
+            Realistic near-term opportunity. US trial enrollment expected late 2026. CRC-SCA enrollment at Northwestern may provide pathway to access. Dr. Alfradique-Dunham will discuss site availability at May 26 visit.
+          </p>
+        </div>
+      </div>
+      
+      <div class="research-item">
+        <h4>CRD-002 (Cure Rare Disease)</h4>
+        <div class="research-date">Legitimate but earlier-stage</div>
+        <div class="research-summary">
+          Gene therapy approach. Non-profit funded by CIRM grant. IND submission to FDA expected 2026. Scientifically sound but ~5–8 years behind VO-659 in realistic patient access.
+        </div>
+        <div class="research-implications">
+          <div class="implication-title">What this means for Jeff:</div>
+          <p style="margin: 0;">
+            Worth monitoring but not an immediate option. Will track progress in October 2026 pipeline review.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- UPDATES TAB -->
+    <div id="updates" class="section">
+      <div class="update-log">
+        <h3>Update log</h3>
+        <p style="margin: 0 0 1rem 0; font-size: 13px; color: var(--text-secondary);">
+          Chronological record of changes. Major updates are scheduled for quarterly pipeline reviews.
+        </p>
+        
+        <div class="log-entry">
+          <div class="log-date">April 21, 2026</div>
+          <p><strong>TUDCA research findings added to Research tab.</strong> Portuguese study shows promise in animal models; no human trials yet. GR biomarker identified. Scheduled watch-list item for 2027+.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">April 18, 2026</div>
+          <p><strong>Johns Hopkins IKI Study completed.</strong> All baseline metrics normal or near-normal (SARA 1, gait velocity 1.27 m/s, Functional Gait Assessment 25/30). Data added to Studies tab.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">April 12, 2026</div>
+          <p><strong>Northwestern follow-up email sent.</strong> Clarified June 4 enrollment prerequisites with Sonia Lopez. Confirmation of test schedule pending.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">April 11, 2026</div>
+          <p><strong>WashU appointment prep document finalized.</strong> May 26 visit ready. Topics: WashU/CRC-SCA coordination, VO-659 trial status, CCAS screening, stimulant co-management.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">April 1, 2026</div>
+          <p><strong>SCA3 Pipeline Status Update document created.</strong> VO-659 Phase 1/2a ongoing; US IND cleared. CRD-002 IND expected 2026. Troriluzole program on hold post-CRL. NLX-112 preclinical phase.</p>
+        </div>
+        
+        <div class="log-entry">
+          <div class="log-date">March 28, 2026</div>
+          <p><strong>Genetic testing results received from Greenwood Genetic Center.</strong> Confirmed SCA3 diagnosis: 14 and 65 CAG repeats. 65-repeat allele is pathogenic; lower than paternal lineage (father 72, brother 70).</p>
+        </div>
+      </div>
+      
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>Update schedule</h3>
+        <p><strong>Quarterly pipeline reviews</strong> (next: October 2026)</p>
+        <ul>
+          <li>VO-659 US trial launch status</li>
+          <li>CRD-002 IND submission outcome</li>
+          <li>NLX-112 SCA3 Phase 1 progress</li>
+          <li>TUDCA human trial timeline</li>
+          <li>Any new natural history study results or appointments</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 13px; color: var(--text-secondary);"><strong>Ad hoc updates</strong> when research findings warrant (like the TUDCA article).</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function switchTab(tabName) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(s => s.classList.remove('active'));
+      
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+  
+  <!-- 
+    TO HOST ON GITHUB PAGES (free, live, always updated):
+    
+    1. Create a free account at github.com (5 minutes)
+    2. Click "+ New repository" and name it "jeff-sca3-hub"
+    3. Click "Add a README" and create the repo
+    4. Inside the repo, click "Add file" > "Create new file"
+    5. Name the file "index.html" and paste this entire file into it
+    6. Click "Commit new file"
+    7. Go to Settings > Pages > Select "main" branch > Save
+    8. GitHub will give you a live URL (like github.com/yourname/jeff-sca3-hub)
+    9. Share that link with family—it always shows the latest version
+    10. To update: open the index.html file, click the pencil icon to edit, make changes, commit
+    
+    STANDALONE USE (no GitHub):
+    
+    1. Save this file as "jeff_sca3_family_hub.html"
+    2. Open it in any web browser (File > Open or double-click)
+    3. Email it to family members or save locally
+    4. To update: edit the file yourself or send it to Claude for updates
+  -->
+</body>
+</html>
