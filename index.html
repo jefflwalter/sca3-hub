@@ -43,9 +43,10 @@
     .container { padding: 1.5rem; max-width: 100%; }
     
     .header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 0.5px solid var(--card-border);
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+      flex: 1;
     }
     
     .header h1 {
@@ -294,11 +295,45 @@
     
     a {
       color: var(--accent);
-      text-decoration: none;
+      text-decoration: underline;
     }
     
     a:hover {
-      text-decoration: underline;
+      opacity: 0.8;
+    }
+    
+    .refresh-btn {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .refresh-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+    
+    .refresh-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--card-border);
     }
     
     .update-log {
@@ -348,11 +383,16 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Hub</h1>
-      <p class="header-desc">
-        A resource for family to understand Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> diagnosis, current medical care, research participation, and treatment outlook. This page is updated regularly as Jeff's medical team receives new information or new treatments become available. Questions? Reach out to Jeff directly.
-      </p>
+    <div class="header-top">
+      <div class="header">
+        <h1>Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Hub</h1>
+        <p class="header-desc">
+          A resource for family to understand Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> diagnosis, current medical care, research participation, and treatment outlook. This page is updated regularly as Jeff's medical team receives new information or new treatments become available. Questions? Reach out to Jeff directly.
+        </p>
+      </div>
+      <button class="refresh-btn" onclick="location.reload();" title="Refresh the page">
+        ↻ Refresh
+      </button>
     </div>
     
     <div class="update-banner">
