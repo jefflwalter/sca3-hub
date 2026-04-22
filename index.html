@@ -1012,6 +1012,24 @@
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Track external link clicks
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (link) {
+        const href = link.getAttribute('href');
+        const isExternal = href && (href.startsWith('http') || href.startsWith('//')) && !href.includes(window.location.hostname);
+        
+        if (isExternal) {
+          const linkText = link.textContent.trim() || link.getAttribute('href');
+          gtag('event', 'external_link_click', {
+            'link_url': href,
+            'link_text': linkText,
+            'event_category': 'engagement'
+          });
+        }
+      }
+    });
   </script>
 </body>
 </html>
