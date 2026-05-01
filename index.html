@@ -4,15 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeff's SCA3 Hub</title>
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1K5D6NMDM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S1K5D6NMDM');
-  </script>
   <style>
     :root {
       --card-bg: #ffffff;
@@ -21,12 +12,6 @@
       --text-secondary: #888780;
       --accent: #185FA5;
       --accent-light: #E6F1FB;
-      --success: #3B6D11;
-      --success-light: rgba(99, 153, 34, 0.15);
-      --warning: #BA7517;
-      --warning-light: rgba(255, 193, 7, 0.15);
-      --info: #0066CC;
-      --info-light: rgba(0, 102, 204, 0.1);
     }
     
     @media (prefers-color-scheme: dark) {
@@ -37,12 +22,6 @@
         --text-secondary: #a8a79f;
         --accent: #85b7eb;
         --accent-light: #0c2a40;
-        --success: #90EE90;
-        --success-light: rgba(144, 238, 144, 0.15);
-        --warning: #FFD700;
-        --warning-light: rgba(255, 215, 0, 0.15);
-        --info: #87CEEB;
-        --info-light: rgba(135, 206, 235, 0.1);
       }
     }
     
@@ -72,17 +51,9 @@
     
     .header h1 {
       margin: 0 0 0.5rem 0;
-      font-size: 28px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 500;
       color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .header-icon {
-      font-size: 32px;
-      display: inline-block;
     }
     
     .header-desc {
@@ -94,24 +65,12 @@
     
     .update-banner {
       background: var(--accent-light);
-      border: 1px solid rgba(24, 95, 165, 0.3);
+      border: 0.5px solid rgba(24, 95, 165, 0.2);
       border-radius: 12px;
       padding: 1rem;
       margin-bottom: 1.5rem;
       font-size: 13px;
       color: var(--text-secondary);
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-    
-    .update-banner::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: -2px;
     }
     
     .update-banner strong {
@@ -122,38 +81,34 @@
       display: flex;
       gap: 0;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--card-border);
+      border-bottom: 0.5px solid var(--card-border);
       overflow-x: auto;
-      scroll-behavior: smooth;
     }
     
     .nav-tabs button {
       background: none;
       border: none;
-      border-bottom: 3px solid transparent;
+      border-bottom: 2px solid transparent;
       padding: 12px 16px;
       cursor: pointer;
       font-size: 14px;
       font-weight: 500;
       color: var(--text-secondary);
-      transition: all 0.25s ease;
+      transition: all 0.2s;
       white-space: nowrap;
-      position: relative;
     }
     
     .nav-tabs button:hover {
       color: var(--text-primary);
-      background: rgba(24, 95, 165, 0.05);
     }
     
     .nav-tabs button.active {
       color: var(--accent);
       border-bottom-color: var(--accent);
-      font-weight: 600;
     }
     
-    .section { display: none; opacity: 0; transition: opacity 0.3s ease; }
-    .section.active { display: block; opacity: 1; }
+    .section { display: none; }
+    .section.active { display: block; }
     
     .card-grid {
       display: grid;
@@ -162,66 +117,23 @@
       margin-bottom: 1.5rem;
     }
     
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 0.5px solid var(--card-border);
       border-radius: 12px;
       padding: 1.25rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-    
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 12px rgba(24, 95, 165, 0.1);
     }
     
     .card.status-card {
       background: var(--accent-light);
-      border-color: rgba(24, 95, 165, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card.status-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle at top-right, rgba(24, 95, 165, 0.1), transparent);
-      border-radius: 50%;
-      pointer-events: none;
+      border-color: rgba(24, 95, 165, 0.2);
     }
     
     .card h3 {
-      margin: 0 0 0.75rem 0;
+      margin: 0 0 0.5rem 0;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .card h3::before {
-      content: '›';
-      color: var(--accent);
-      font-size: 20px;
-      font-weight: bold;
-    }
-    
-    .card.status-card h3::before {
-      content: '•';
-      color: var(--accent);
-      font-size: 24px;
     }
     
     .card p {
@@ -234,19 +146,10 @@
     .card p:last-child { margin-bottom: 0; }
     
     .stat-value {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-    
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-secondary);
+      font-size: 18px;
       font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
     }
     
     .timeline {
@@ -254,60 +157,30 @@
     }
     
     .timeline-item {
-      margin-bottom: 1.5rem;
-      padding-left: 32px;
+      margin-bottom: 1rem;
+      padding-left: 24px;
       position: relative;
-      animation: slideIn 0.4s ease forwards;
-      opacity: 0;
     }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
     
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: 0px;
+      left: 4px;
       top: 6px;
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--accent);
-      border: 3px solid var(--card-bg);
-      box-shadow: 0 0 0 2px var(--accent);
-      transition: all 0.3s ease;
-    }
-    
-    .timeline-item:hover::before {
-      transform: scale(1.25);
-      box-shadow: 0 0 0 4px var(--accent-light);
     }
     
     .timeline-item::after {
       content: '';
       position: absolute;
-      left: 7px;
-      top: 22px;
+      left: 9px;
+      top: 18px;
       width: 2px;
-      bottom: -24px;
+      bottom: -16px;
       background: var(--card-border);
-      transition: background 0.3s ease;
-    }
-    
-    .timeline-item:hover::after {
-      background: var(--accent);
     }
     
     .timeline-item:last-child::after {
@@ -316,48 +189,35 @@
     
     .timeline-date {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--accent);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 2px;
     }
     
     .timeline-label {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 500;
       color: var(--text-primary);
-      margin-bottom: 4px;
     }
     
     .timeline-desc {
       font-size: 13px;
       color: var(--text-secondary);
       margin-top: 4px;
-      font-style: italic;
     }
     
     .research-item {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 0.5px solid var(--card-border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       margin-bottom: 1rem;
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--accent);
-      position: relative;
-    }
-    
-    .research-item:hover {
-      box-shadow: 0 4px 12px rgba(24, 95, 165, 0.12);
-      border-left-color: var(--accent);
-      transform: translateY(-2px);
     }
     
     .research-item h4 {
       margin: 0 0 0.5rem 0;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 500;
       color: var(--text-primary);
     }
     
@@ -365,141 +225,81 @@
       font-size: 12px;
       color: var(--text-secondary);
       margin-bottom: 0.75rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .research-date::before {
-      content: '📅';
-      display: inline-block;
     }
     
     .research-summary {
       font-size: 14px;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
     
     .research-implications {
-      background: var(--accent-light);
-      border-left: 4px solid var(--accent);
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: 8px;
+      background: rgba(24, 95, 165, 0.05);
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem;
+      margin-top: 0.75rem;
       font-size: 13px;
       color: var(--text-secondary);
     }
     
     .implication-title {
-      font-weight: 600;
+      font-weight: 500;
       color: var(--accent);
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .implication-title::before {
-      content: '💡';
-      display: inline-block;
+      margin-bottom: 0.25rem;
     }
     
     .study-card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 0.5px solid var(--card-border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       margin-bottom: 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .study-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 12px rgba(24, 95, 165, 0.1);
     }
     
     .study-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 6px 12px;
+      display: inline-block;
+      padding: 4px 10px;
       border-radius: 8px;
       font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      font-weight: 500;
+      margin-bottom: 0.75rem;
     }
     
     .study-status.enrolled {
-      background: var(--success-light);
-      color: var(--success);
-    }
-    
-    .study-status.enrolled::before {
-      content: '✓';
-      font-weight: bold;
+      background: rgba(99, 153, 34, 0.15);
+      color: #3B6D11;
     }
     
     .study-status.scheduled {
-      background: var(--warning-light);
-      color: var(--warning);
-    }
-    
-    .study-status.scheduled::before {
-      content: '⏰';
-    }
-    
-    .study-status.completed {
-      background: var(--success-light);
-      color: var(--success);
-    }
-    
-    .study-status.completed::before {
-      content: '✓';
-      font-weight: bold;
+      background: rgba(255, 193, 7, 0.15);
+      color: #BA7517;
     }
     
     .study-title {
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 500;
       color: var(--text-primary);
-      margin: 0 0 0.75rem 0;
+      margin: 0.75rem 0;
     }
     
     .study-details {
       font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.5;
     }
     
     .study-details p {
       margin: 0.5rem 0;
     }
     
-    .study-details strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-    
     a {
       color: var(--accent);
       text-decoration: underline;
-      transition: all 0.2s ease;
     }
     
     a:hover {
       opacity: 0.8;
-      text-decoration-thickness: 2px;
     }
     
     .refresh-btn {
@@ -510,7 +310,7 @@
       cursor: pointer;
       color: var(--accent);
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 500;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
@@ -520,12 +320,10 @@
     .refresh-btn:hover {
       background: var(--accent-light);
       border-color: var(--accent);
-      transform: rotate(180deg);
-      transition: transform 0.4s ease;
     }
     
     .refresh-btn:active {
-      transform: scale(0.95) rotate(180deg);
+      transform: scale(0.95);
     }
     
     .header-top {
@@ -535,7 +333,7 @@
       gap: 1rem;
       margin-bottom: 2rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--card-border);
+      border-bottom: 0.5px solid var(--card-border);
     }
     
     .update-log {
@@ -544,142 +342,42 @@
     
     .update-log h3 {
       margin: 0 0 1rem 0;
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 500;
       color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .update-log h3::before {
-      content: '📋';
-      display: inline-block;
     }
     
     .log-entry {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 0.5px solid var(--card-border);
       border-radius: 12px;
       padding: 1rem;
       margin-bottom: 0.75rem;
-      border-left: 4px solid var(--accent);
-      transition: all 0.3s ease;
-    }
-    
-    .log-entry:hover {
-      border-left-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(24, 95, 165, 0.08);
     }
     
     .log-date {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
     }
     
     .log-entry p {
       margin: 0.5rem 0 0 0;
       font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.5;
     }
     
     ul {
-      margin: 0.75rem 0;
-      padding-left: 24px;
+      margin: 0.5rem 0;
+      padding-left: 20px;
       font-size: 13px;
       color: var(--text-secondary);
     }
     
     ul li {
-      margin: 0.5rem 0;
-      transition: all 0.2s ease;
-    }
-    
-    ul li:hover {
-      color: var(--text-primary);
-      transform: translateX(4px);
-    }
-    
-    ul li::marker {
-      color: var(--accent);
-      font-weight: bold;
-    }
-    
-    .progress-indicator {
-      display: flex;
-      gap: 0.25rem;
-      margin-top: 1rem;
-    }
-    
-    .progress-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--card-border);
-      transition: all 0.3s ease;
-    }
-    
-    .progress-dot.active {
-      background: var(--accent);
-      transform: scale(1.5);
-    }
-    
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--card-border), transparent);
-      margin: 2rem 0;
-    }
-    
-    .quick-nav {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .quick-nav a {
-      padding: 6px 12px;
-      background: var(--accent-light);
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--accent);
-      transition: all 0.2s ease;
-    }
-    
-    .quick-nav a:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    @media (max-width: 640px) {
-      .header h1 {
-        font-size: 24px;
-      }
-      
-      .header-top {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .card {
-        padding: 1rem;
-      }
-      
-      .timeline-item {
-        padding-left: 28px;
-      }
-      
-      .study-card {
-        padding: 1rem;
-      }
+      margin: 0.25rem 0;
     }
   </style>
 </head>
@@ -687,7 +385,7 @@
   <div class="container">
     <div class="header-top">
       <div class="header">
-        <h1><span class="header-icon">🧬</span> Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Hub</h1>
+        <h1>Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Hub</h1>
         <p class="header-desc">
           A resource for family to understand Jeff's <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> diagnosis, current medical care, research participation, and treatment outlook. This page is updated regularly as Jeff's medical team receives new information or new treatments become available. Questions? Reach out to Jeff directly.
         </p>
@@ -698,9 +396,7 @@
     </div>
     
     <div class="update-banner">
-      <div>
-        <strong>Last updated:</strong> April 21, 2026 · Dr. Alfradique-Dunham links added · SARA score link added · SCA3 resource links added · CCAS and Dr. Schmahmann reference added
-      </div>
+      <strong>Last updated:</strong> May 1, 2026 · Johns Hopkins NIMH-22 study inquiry added · Awaiting eligibility response
     </div>
     
     <div class="nav-tabs">
@@ -715,31 +411,22 @@
     <div id="overview" class="section active">
       <div class="card-grid">
         <div class="card status-card">
-          <h3>Disease Status</h3>
-          <div class="stat-value">
-            <a href="https://www.ataxia.org/scasourceposts/snapshot-how-do-clinicians-measure-the-severity-of-ataxia-in-patients/" target="_blank">SARA</a> 
-            <span class="stat-label">1/40</span>
-          </div>
+          <h3>Disease status</h3>
+          <div class="stat-value"><a href="https://www.ataxia.org/scasourceposts/snapshot-how-do-clinicians-measure-the-severity-of-ataxia-in-patients/" target="_blank">SARA</a> 1/40</div>
           <p>Early-stage with slight symptoms. No assistive devices needed. Functional and independent.</p>
-          <p style="font-size: 12px; margin-top: 0.5rem; color: var(--accent); font-weight: 500;">🧬 Genetic test: 65 CAG repeats (pathogenic)</p>
+          <p style="font-size: 12px; margin-top: 0.5rem;">Genetic test: 65 CAG repeats (pathogenic)</p>
         </div>
         
         <div class="card status-card">
-          <h3>Repeat Count Context</h3>
-          <div class="stat-value">
-            <span>65</span>
-            <span class="stat-label">repeats</span>
-          </div>
+          <h3>Repeat count context</h3>
+          <div class="stat-value">65 repeats</div>
           <p>Lower than father (72) and brother (70). Favorable but still pathogenic.</p>
           <p style="font-size: 12px; margin-top: 0.5rem;">Age 51 · Early-stage trajectory</p>
         </div>
         
         <div class="card status-card">
-          <h3>Primary Goal</h3>
-          <div class="stat-value">
-            <span>🎯</span>
-            <span class="stat-label" style="font-size: 14px;">Ahead of Curve</span>
-          </div>
+          <h3>Primary goal</h3>
+          <div class="stat-value">Ahead of curve</div>
           <p>Proactive enrollment in natural history study, trial access, and research before meaningful progression.</p>
         </div>
       </div>
@@ -758,21 +445,21 @@
       </div>
       
       <div class="card">
-        <h3>Current Care Team</h3>
-        <p><strong>👨‍⚕️ <a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">Dr. Isabel Alfradique-Dunham</a></strong><br/>Movement Disorders, WashU Medicine<br/>Primary neurologist · Next visit: May 26, 2026</p>
-        <p style="margin-top: 1rem;"><strong>🔬 <a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></strong><br/>Northwestern coordination<br/>Enrollment visit: June 4, 2026</p>
-        <p style="margin-top: 1rem;"><strong>🏥 Jennifer Millar, PT</strong><br/>Ataxia balance/gait researcher, Johns Hopkins<br/>Recently completed baseline assessments</p>
+        <h3>Current care team</h3>
+        <p><strong><a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">Dr. Isabel Alfradique-Dunham</a></strong><br/>Movement Disorders, WashU Medicine<br/>Primary neurologist · Next visit: May 26, 2026</p>
+        <p style="margin-top: 1rem;"><strong><a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></strong><br/>Northwestern coordination<br/>Enrollment visit: June 4, 2026</p>
+        <p style="margin-top: 1rem;"><strong>Jennifer Millar, PT</strong><br/>Ataxia balance/gait researcher, Johns Hopkins<br/>Recently completed baseline assessments</p>
       </div>
     </div>
     
     <!-- APPOINTMENTS TAB -->
     <div id="appointments" class="section">
       <div class="card">
-        <h3>Upcoming Appointments</h3>
+        <h3>Upcoming appointments</h3>
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-date">May 4, 2026</div>
-            <div class="timeline-label">📊 MGH Wearables Study — First session</div>
+            <div class="timeline-label">MGH Wearables Study — First session</div>
             <div class="timeline-desc">Remote session via Nathan Zhang</div>
             <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
               <strong>Activities:</strong> Wrist and ankle sensor wear, neurological testing, questionnaires
@@ -781,7 +468,7 @@
 
           <div class="timeline-item">
             <div class="timeline-date">May 26, 2026</div>
-            <div class="timeline-label">🩺 WashU Neurology follow-up</div>
+            <div class="timeline-label">WashU Neurology follow-up</div>
             <div class="timeline-desc"><a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">Dr. Isabel Alfradique-Dunham</a> · Movement Disorders</div>
             <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
               <strong>Topics:</strong> WashU coordination with CRC-SCA, record sharing, VO-659 trial status, stimulant use in early <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a>, CCAS screening
@@ -790,7 +477,7 @@
           
           <div class="timeline-item">
             <div class="timeline-date">June 4, 2026, 10 AM</div>
-            <div class="timeline-label">🏛️ Northwestern new patient visit</div>
+            <div class="timeline-label">Northwestern new patient visit</div>
             <div class="timeline-desc">Dr. Akhtar · <a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a> enrollment</div>
             <div style="margin-top: 0.5rem; font-size: 12px; color: var(--text-secondary);">
               <strong>Goal:</strong> Baseline assessment and enrollment in natural history registry. Prerequisite for future treatment trials.
@@ -800,14 +487,14 @@
       </div>
       
       <div class="card">
-        <h3>Preparation Notes</h3>
-        <p><strong>📝 For May 4 MGH Wearables first session:</strong></p>
+        <h3>Preparation notes</h3>
+        <p><strong>For May 4 MGH Wearables first session:</strong></p>
         <ul>
           <li>Confirm remote session details with Nathan Zhang</li>
           <li>Have clear space for sensor wear and testing</li>
           <li>Be available for brief check-in call</li>
         </ul>
-        <p style="margin-top: 1rem;"><strong>📝 For May 26 WashU visit with <a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">Dr. Alfradique-Dunham</a>:</strong></p>
+        <p style="margin-top: 1rem;"><strong>For May 26 WashU visit with <a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">Dr. Alfradique-Dunham</a>:</strong></p>
         <ul>
           <li>Bring appointment prep document with medical summary</li>
           <li>Ask about MoCA baseline and neurology co-management of medications</li>
@@ -817,7 +504,7 @@
             </div>
           </li>
         </ul>
-        <p style="margin-top: 1rem;"><strong>📝 For June 4 Northwestern visit:</strong></p>
+        <p style="margin-top: 1rem;"><strong>For June 4 Northwestern visit:</strong></p>
         <ul>
           <li>Confirm enrollment prerequisites and baseline testing schedule</li>
           <li>Ask about future treatment trial eligibility at Northwestern</li>
@@ -829,35 +516,48 @@
     <!-- STUDIES TAB -->
     <div id="studies" class="section">
       <div class="study-card">
-        <div class="study-status scheduled">Enrollment Scheduled</div>
-        <div class="study-title">🔬 <a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></div>
+        <div class="study-status enrolled">Enrollment scheduled</div>
+        <div class="study-title"><a href="https://www.ataxia.org/crc-sca/" target="_blank">CRC-SCA Natural History Study</a></div>
         <div class="study-details">
           <p><strong>Status:</strong> Scheduled for June 4, 2026 at Northwestern</p>
           <p><strong>What it is:</strong> Multi-site longitudinal registry tracking SCA patients over time. Collects baseline cognitive, motor, and genetic data.</p>
           <p><strong>Why it matters:</strong> Independent scientific value + prerequisite for many clinical trials, including future Northwestern treatment trials</p>
-          <p><strong>📧 Contact:</strong> Sonia Lopez (sonia.lopez@northwestern.edu)</p>
+          <p><strong>Contact:</strong> Sonia Lopez (sonia.lopez@northwestern.edu)</p>
         </div>
       </div>
       
       <div class="study-card">
-        <div class="study-status enrolled">Enrolled - Starts May 4</div>
-        <div class="study-title">📊 MGH Wearables Study</div>
+        <div class="study-status enrolled">Enrolled - starts May 4</div>
+        <div class="study-title">MGH Wearables Study</div>
         <div class="study-details">
           <p><strong>Status:</strong> Enrolled. First session May 4, 2026</p>
           <p><strong>What it is:</strong> Remote longitudinal study tracking movement and balance progression every 6 months using wrist/ankle sensors</p>
           <p><strong>Your participation:</strong> Wear sensors (wrist + ankle) for one week approximately every 6 months, complete neurological tests and brief questionnaires during sensor weeks</p>
           <p><strong>Duration:</strong> 18 months with checkpoints every 6 months</p>
           <p><strong>Why it matters:</strong> Develops better measurement tools for clinical trials; creates objective tracking of symptom progression</p>
-          <p><strong>📧 Contact:</strong> Nathan Zhang · mghremotescastudy@mgb.org · 617-726-7909</p>
+          <p><strong>Contact:</strong> Nathan Zhang · mghremotescastudy@mgb.org · 617-726-7909</p>
         </div>
       </div>
       
       <div class="study-card">
-        <div class="study-status completed">Recently Completed</div>
-        <div class="study-title">🏥 Johns Hopkins IKI Study</div>
+        <div class="study-status scheduled">Inquiry pending</div>
+        <div class="study-title">Johns Hopkins NIMH-22 Study</div>
+        <div class="study-details">
+          <p><strong>Status:</strong> Awaiting response to eligibility inquiry</p>
+          <p><strong>Principal Investigator:</strong> Professor John Desmond, Ph.D.</p>
+          <p><strong>Focus:</strong> Investigation of cerebellar involvement in cognitive sequencing</p>
+          <p><strong>Why it matters:</strong> Explores cerebellar cognitive function in <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a>, complementing understanding of CCAS and cognitive changes</p>
+          <p><strong>Next step:</strong> Awaiting response regarding enrollment status and eligibility criteria</p>
+          <p><strong>Contact:</strong> <a href="https://nimlab.johnshopkins.edu/nimh22.html" target="_blank">NIMH-22 Study Information</a> · Johns Hopkins Neurology Research</p>
+        </div>
+      </div>
+      
+      <div class="study-card">
+        <div class="study-status enrolled">Recently completed</div>
+        <div class="study-title">Johns Hopkins IKI Study</div>
         <div class="study-details">
           <p><strong>Completed:</strong> April 2026</p>
-          <p><strong>Results:</strong> <a href="https://www.ataxia.org/scasourceposts/snapshot-how-do-clinicians-measure-the-severity-of-ataxia-in-patients/" target="_blank">SARA</a> 1/40, normal vestibular function (vHIT), 25-foot gait test 9.4s (normal)</p>
+          <p><strong>Results:</strong> SARA 1/40, normal vestibular function (vHIT), 25-foot gait test 9.4s (normal)</p>
           <p><strong>Balance metrics:</strong> Functional Gait Assessment 25/30 (mild fall risk), gait velocity 1.27 m/s</p>
           <p><strong>Researcher:</strong> Jennifer Millar, PT</p>
         </div>
@@ -867,7 +567,7 @@
     <!-- RESEARCH TAB -->
     <div id="research" class="section">
       <div class="research-item">
-        <h4>🧪 Bile Acid Treatment Prevents <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Movement Problems in Animals</h4>
+        <h4>Bile acid treatment prevents <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> movement problems in animals</h4>
         <div class="research-date">April 17, 2026 · National Ataxia Foundation</div>
         <div class="research-summary">
           Researchers in Portugal found that TUDCA (tauroursodeoxycholic acid)—a bile acid already approved by the FDA for gastrointestinal disorders—protected balance and coordination in mouse and worm models of <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a>. The drug works by stabilizing a protein called the glucocorticoid receptor (GR), preventing cell death in the brain and spinal cord.
@@ -881,8 +581,8 @@
       </div>
       
       <div class="research-item">
-        <h4>⭐ Most Advanced <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> Therapy — VO-659 (Vico Therapeutics)</h4>
-        <div class="research-date">Phase 1/2a Ongoing</div>
+        <h4>Most advanced <a href="https://www.ataxia.org/sca3/" target="_blank">SCA3</a> therapy — VO-659 (Vico Therapeutics)</h4>
+        <div class="research-date">Phase 1/2a ongoing</div>
         <div class="research-summary">
           ASO (antisense oligonucleotide) therapy. Twice-annual dosing began Feb 2026. FDA IND cleared for US trials. In Huntington's disease cohort, achieved 38% reduction in mutant huntingtin protein in cerebrospinal fluid.
         </div>
@@ -895,8 +595,8 @@
       </div>
       
       <div class="research-item">
-        <h4>🔬 CRD-002 (Cure Rare Disease)</h4>
-        <div class="research-date">Gene Therapy · Earlier-Stage</div>
+        <h4>CRD-002 (Cure Rare Disease)</h4>
+        <div class="research-date">Legitimate but earlier-stage</div>
         <div class="research-summary">
           Gene therapy approach. Non-profit funded by CIRM grant. IND submission to FDA expected 2026. Scientifically sound but ~5–8 years behind VO-659 in realistic patient access.
         </div>
@@ -912,16 +612,16 @@
     <!-- UPDATES TAB -->
     <div id="updates" class="section">
       <div class="update-log">
-        <h3>Update Log</h3>
+        <h3>Update log</h3>
         <p style="margin: 0 0 1rem 0; font-size: 13px; color: var(--text-secondary);">
           Chronological record of changes. Major updates are scheduled for quarterly pipeline reviews.
         </p>
         
         <div class="log-entry">
-          <div class="log-date">April 21, 2026</div>
-          <p><strong>✨ Hub Enhanced with Visual Improvements</strong> Added emoji icons, improved color coding, animations, better typography hierarchy, progress indicators, and refined mobile responsiveness for cleaner presentation and improved scannability.</p>
+          <div class="log-date">May 1, 2026</div>
+          <p><strong>Johns Hopkins NIMH-22 study inquiry added.</strong> Professor John Desmond's cognitive sequencing research project now appears in Studies tab with full contact information. Study focuses on cerebellar involvement in cognitive sequencing—complementary to CCAS screening discussions. Eligibility inquiry sent; awaiting response regarding enrollment status and any additional criteria beyond those listed on study website.</p>
         </div>
-        
+
         <div class="log-entry">
           <div class="log-date">April 21, 2026</div>
           <p><strong>Dr. Alfradique-Dunham profile links added.</strong> Dr. Isabel Alfradique-Dunham's name now links to her <a href="https://physicians.wustl.edu/people/isabel-alfradique-dunham-md/" target="_blank">official WashU Medicine profile</a> in three places: Care Team section, Appointments timeline, and Appointment prep notes. Family can now click to learn about her background and specialties.</p>
@@ -984,8 +684,8 @@
       </div>
       
       <div class="card" style="margin-top: 1.5rem;">
-        <h3>Update Schedule</h3>
-        <p><strong>📅 Quarterly Pipeline Reviews</strong> (next: October 2026)</p>
+        <h3>Update schedule</h3>
+        <p><strong>Quarterly pipeline reviews</strong> (next: October 2026)</p>
         <ul>
           <li>VO-659 US trial launch status</li>
           <li>CRD-002 IND submission outcome</li>
@@ -993,7 +693,7 @@
           <li>TUDCA human trial timeline</li>
           <li>Any new natural history study results or appointments</li>
         </ul>
-        <p style="margin-top: 1rem; font-size: 13px; color: var(--text-secondary);"><strong>📝 Ad Hoc Updates</strong> when research findings warrant (like the TUDCA article).</p>
+        <p style="margin-top: 1rem; font-size: 13px; color: var(--text-secondary);"><strong>Ad hoc updates</strong> when research findings warrant (like the TUDCA article).</p>
       </div>
     </div>
   </div>
@@ -1008,28 +708,7 @@
       
       document.getElementById(tabName).classList.add('active');
       event.target.classList.add('active');
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // Track external link clicks
-    document.addEventListener('click', function(e) {
-      const link = e.target.closest('a');
-      if (link) {
-        const href = link.getAttribute('href');
-        const isExternal = href && (href.startsWith('http') || href.startsWith('//')) && !href.includes(window.location.hostname);
-        
-        if (isExternal) {
-          const linkText = link.textContent.trim() || link.getAttribute('href');
-          gtag('event', 'external_link_click', {
-            'link_url': href,
-            'link_text': linkText,
-            'event_category': 'engagement'
-          });
-        }
-      }
-    });
   </script>
 </body>
 </html>
